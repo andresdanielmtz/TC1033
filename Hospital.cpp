@@ -11,18 +11,17 @@ Hospital::Hospital() {
     
 }
 
-Hospital::Hospital(string cNombre, string cPaciente) {
+Hospital::Hospital(string cNombre) {
     nombre = cNombre;
-    paciente = cPaciente;
-    Paciente apa;
+    
 }
 
 string Hospital::getNombre() {
     return nombre;
 }
 
-int Hospital::getPaciente() {
-    return sizeof(paciente);
+string Hospital::getPaciente() {
+    return listPaciente;
 }
 
 void Hospital::setNombre(string cNombre) {
@@ -32,3 +31,5 @@ void Hospital::setNombre(string cNombre) {
 void Hospital::addPaciente(Paciente cPaciente) {
     
 }
+
+Hospital::~Hospital() {}

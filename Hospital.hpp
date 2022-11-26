@@ -16,15 +16,17 @@ using namespace std;
 class Hospital {
 private:
     string nombre;
-    string paciente = {}; // lista de pacientes
-    Paciente apa; 
+    string listPaciente = {}; // lista de pacientes
+    Paciente apa;
 public:
     Hospital(); 
-    Hospital(string cNombre, string paciente);
+    Hospital(string cNombre);
     string getNombre();
-    int getPaciente();
+    string getPaciente(); // return list of paciente
+    
     void setNombre(string);
     void addPaciente(Paciente); // no. de pacientes
+    ~Hospital();
 };
 
 #endif /* hospital_hpp */

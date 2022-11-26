@@ -24,5 +24,6 @@ public:
     string getSintomas();
     void setSintomas(string cSintomas);
     bool hasCovid();
+    ~Perfil();
 };
 #endif /* Perfil_hpp */

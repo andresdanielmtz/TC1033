@@ -33,6 +33,7 @@ public:
     void setDiscapacidades(string);
     void setEnfermedades(string);
     bool riesgo();
+    ~Paciente();
 };
 #endif /* Paciente_hpp */
 

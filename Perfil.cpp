@@ -28,3 +28,5 @@ bool Perfil::hasCovid() {
     
     return false;
 }
+
+Perfil::~Perfil() {} 

@@ -68,3 +68,4 @@ bool Paciente::riesgo() {
     return (riskCondition >= 2);
 }
 
+Paciente::~Paciente() {} 
