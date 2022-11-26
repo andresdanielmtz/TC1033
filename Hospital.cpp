@@ -6,7 +6,7 @@
 //
 
 #include "Hospital.hpp"
-
+#include "Paciente.hpp"
 Hospital::Hospital() {
     
 }
@@ -14,6 +14,7 @@ Hospital::Hospital() {
 Hospital::Hospital(string cNombre, string cPaciente) {
     nombre = cNombre;
     paciente = cPaciente;
+    Paciente apa;
 }
 
 string Hospital::getNombre() {
@@ -28,6 +29,6 @@ void Hospital::setNombre(string cNombre) {
     nombre = cNombre;
 }
 
-void Hospital::setPacientes(int num) {
-    // ???
+void Hospital::addPaciente(Paciente cPaciente) {
+    
 }

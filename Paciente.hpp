@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 using namespace std;
+#include "Perfil.hpp"
 
 class Paciente {
 private:
@@ -19,12 +20,14 @@ private:
     short edad;
     string discapacidades = {};
     string enfermedades = {};
+    Perfil paciente;
 public:
     Paciente();
-    Paciente(string cNombre, short cEdad, string cDiscapacidades);
+    Paciente(string cNombre, short cEdad, string cDiscapacidades, Perfil cPaciente);
     short getEdad();
     string getDiscapacidades();
     string getEnfermedades();
+    string getNombrePaciente();
     void setNombre(string);
     void setEdad(short);
     void setDiscapacidades(string);

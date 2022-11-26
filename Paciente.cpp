@@ -14,10 +14,11 @@ Paciente::Paciente() {
     enfermedades = {};
 }
 
-Paciente::Paciente(string cNombre, short cEdad, string cDiscapacidades) {
+Paciente::Paciente(string cNombre, short cEdad, string cDiscapacidades, Perfil cPaciente) {
     nombrePaciente = cNombre;
     edad = cEdad;
     discapacidades = cDiscapacidades;
+    paciente = cPaciente; // perfil paciente :)
 }
 
 short Paciente::getEdad() {
@@ -30,6 +31,10 @@ string Paciente::getDiscapacidades() {
 
 string Paciente::getEnfermedades() {
     return enfermedades;
+}
+
+string Paciente::getNombrePaciente() {
+    return nombrePaciente;
 }
 
 void Paciente::setNombre(string cNombre) {
@@ -49,7 +54,17 @@ void Paciente::setEnfermedades(string cEnfermedades) {
 }
 
 bool Paciente::riesgo() {
-    // to add functionality
-    return false;
+    int riskCondition = 0;
+    if (getEdad() < 18 || getEdad() > 65) {
+        riskCondition += 1;
+    }
+    if (size(getEnfermedades()) > 0) {
+        riskCondition += 1;
+    }
+    if (size(getDiscapacidades()) > 0) {
+        riskCondition += 1;
+    }
+    // barbones function, can be optimized
+    return (riskCondition >= 2);
 }
 

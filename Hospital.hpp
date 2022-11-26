@@ -17,13 +17,14 @@ class Hospital {
 private:
     string nombre;
     string paciente = {}; // lista de pacientes
+    Paciente apa; 
 public:
     Hospital(); 
     Hospital(string cNombre, string paciente);
     string getNombre();
     int getPaciente();
     void setNombre(string);
-    void setPacientes(int); // no. de pacientes
+    void addPaciente(Paciente); // no. de pacientes
 };
 
 #endif /* hospital_hpp */
