@@ -14,6 +14,7 @@
 using namespace std;
 
 void intro() {
+    // to add intro 
     list<Paciente> listaPacientes;
     while (true) {
         int choice;
