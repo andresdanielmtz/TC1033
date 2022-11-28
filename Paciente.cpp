@@ -6,6 +6,8 @@
 //
 
 #include "Paciente.hpp"
+#include <list>
+#include <string>
 
 Paciente::Paciente() {
     nombrePaciente = "";
@@ -14,22 +16,22 @@ Paciente::Paciente() {
     enfermedades = {};
 }
 
-Paciente::Paciente(string cNombre, short cEdad, string cDiscapacidades, Perfil cPaciente) {
+Paciente::Paciente(string cNombre, short cEdad, list<string> cDiscapacidades, Perfil cPerfil) {
     nombrePaciente = cNombre;
     edad = cEdad;
     discapacidades = cDiscapacidades;
-    paciente = cPaciente; // perfil paciente :)
+    perfil = cPerfil; // perfil paciente :)
 }
 
 short Paciente::getEdad() {
     return edad;
 }
 
-string Paciente::getDiscapacidades() {
+list<string> Paciente::getDiscapacidades() {
     return discapacidades;
 }
 
-string Paciente::getEnfermedades() {
+list<string> Paciente::getEnfermedades() {
     return enfermedades;
 }
 
@@ -45,17 +47,17 @@ void Paciente::setEdad(short cEdad) {
     edad = cEdad;
 }
 
-void Paciente::setDiscapacidades(string cDiscapacidades) {
-    discapacidades = cDiscapacidades;
+void Paciente::addDiscapacidades(string cDiscapacidades) {
+    discapacidades.push_back(cDiscapacidades);
 }
 
-void Paciente::setEnfermedades(string cEnfermedades) {
-    enfermedades = cEnfermedades;
+void Paciente::addEnfermedades(string cEnfermedades) {
+    enfermedades.push_back(cEnfermedades);
 }
 
-bool Paciente::riesgo() {
+bool Paciente::hasRiesgo() { // does this work ??
     int riskCondition = 0;
-    if (getEdad() < 18 || getEdad() > 65) {
+    if (edad < 18 || edad > 65) {
         riskCondition += 1;
     }
     if (size(getEnfermedades()) > 0) {
@@ -64,8 +66,12 @@ bool Paciente::riesgo() {
     if (size(getDiscapacidades()) > 0) {
         riskCondition += 1;
     }
-    // barbones function, can be optimized
+    // barebones function, can be optimized
     return (riskCondition >= 2);
 }
 
-Paciente::~Paciente() {} 
+bool Paciente::hasRiskCovid() {
+    return (size(perfil.getSintomas()) > 1);
+}
+
+Paciente::~Paciente() {}

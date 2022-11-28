@@ -7,6 +7,9 @@
 
 #include "Hospital.hpp"
 #include "Paciente.hpp"
+#include <string>
+#include <list>
+
 Hospital::Hospital() {
     
 }
@@ -20,7 +23,7 @@ string Hospital::getNombre() {
     return nombre;
 }
 
-string Hospital::getPaciente() {
+list<Paciente> Hospital::getPaciente() {
     return listPaciente;
 }
 
@@ -29,7 +32,8 @@ void Hospital::setNombre(string cNombre) {
 }
 
 void Hospital::addPaciente(Paciente cPaciente) {
-    
+    listPaciente.push_back(cPaciente);
+    cout << "Añadido paciente. Nombre: " << cPaciente.getNombrePaciente() << endl;
 }
 
 Hospital::~Hospital() {}

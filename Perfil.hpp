@@ -11,19 +11,19 @@
 #include <stdio.h>
 #include <string>
 #include <vector>
+#include <list>
 
 using namespace std;
 
 class Perfil {
 private:
-    string sintomas = {};
+    list<string> sintomas;
     bool riesgo;
 public:
     Perfil();
-    Perfil(string cSintomas);
-    string getSintomas();
-    void setSintomas(string cSintomas);
-    bool hasCovid();
+    Perfil(list<string> cSintomas);
+    list<string> getSintomas();
+    void addSintomas(string cSintomas);
     ~Perfil();
 };
 #endif /* Perfil_hpp */

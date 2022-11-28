@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <string>
 #include <vector>
+#include <list>
 using namespace std;
 #include "Perfil.hpp"
 
@@ -18,21 +19,22 @@ class Paciente {
 private:
     string nombrePaciente;
     short edad;
-    string discapacidades = {};
-    string enfermedades = {};
-    Perfil paciente;
+    list<string> discapacidades = {};
+    list<string> enfermedades = {};
+    Perfil perfil;
 public:
     Paciente();
-    Paciente(string cNombre, short cEdad, string cDiscapacidades, Perfil cPaciente);
+    Paciente(string cNombre, short cEdad, list<string> cDiscapacidades, Perfil cPaciente);
     short getEdad();
-    string getDiscapacidades();
-    string getEnfermedades();
+    list<string> getDiscapacidades();
+    list<string> getEnfermedades();
     string getNombrePaciente();
     void setNombre(string);
     void setEdad(short);
-    void setDiscapacidades(string);
-    void setEnfermedades(string);
-    bool riesgo();
+    void addDiscapacidades(string);
+    void addEnfermedades(string);
+    bool hasRiesgo();
+    bool hasRiskCovid(); 
     ~Paciente();
 };
 #endif /* Paciente_hpp */

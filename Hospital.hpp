@@ -11,21 +11,22 @@
 #include <stdio.h>
 #include <string>
 #include "Paciente.hpp"
+#include <iostream>
+#include <list>
 using namespace std;
 
 class Hospital {
 private:
     string nombre;
-    string listPaciente = {}; // lista de pacientes
+    list<Paciente> listPaciente; // lista de pacientes
     Paciente apa;
 public:
-    Hospital(); 
+    Hospital();
     Hospital(string cNombre);
     string getNombre();
-    string getPaciente(); // return list of paciente
-    
+    list<Paciente> getPaciente(); // return list of paciente
     void setNombre(string);
-    void addPaciente(Paciente); // no. de pacientes
+    void addPaciente(Paciente); // add pacient 
     ~Hospital();
 };
 

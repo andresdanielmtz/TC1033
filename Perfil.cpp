@@ -5,28 +5,25 @@
 //  Created by Andres Daniel  on 25/11/22.
 //
 #include "Perfil.hpp"
+#include <list>
+#include <string>
+using namespace std;
 
 Perfil::Perfil() {
-    sintomas = {};
+    list<string> sintomas = {};
     riesgo = false;
 }
 
-Perfil::Perfil(string cSintomas) {
+Perfil::Perfil(list<string> cSintomas) {
     sintomas = cSintomas;
 }
 
-string Perfil::getSintomas() {
+list<string> Perfil::getSintomas() {
     return sintomas;
 }
 
-void Perfil::setSintomas(string cSintomas) {
-    sintomas = cSintomas;
-}
-
-bool Perfil::hasCovid() {
-    // to add functionality
-    
-    return false;
+void Perfil::addSintomas(string cSintomas) {
+    sintomas.push_back(cSintomas);
 }
 
 Perfil::~Perfil() {} 
