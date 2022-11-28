@@ -16,11 +16,12 @@ Paciente::Paciente() {
     enfermedades = {};
 }
 
-Paciente::Paciente(string cNombre, short cEdad, list<string> cDiscapacidades, Perfil cPerfil) {
+Paciente::Paciente(string cNombre, short cEdad, list<string> cDiscapacidades, list<string> cEnfermedades, Perfil cPerfil) {
     nombrePaciente = cNombre;
     edad = cEdad;
     discapacidades = cDiscapacidades;
     perfil = cPerfil; // perfil paciente :)
+    enfermedades = cEnfermedades;
 }
 
 short Paciente::getEdad() {

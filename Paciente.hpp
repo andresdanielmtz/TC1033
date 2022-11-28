@@ -24,7 +24,7 @@ private:
     Perfil perfil;
 public:
     Paciente();
-    Paciente(string cNombre, short cEdad, list<string> cDiscapacidades, Perfil cPaciente);
+    Paciente(string cNombre, short cEdad, list<string> cDiscapacidades, list<string> enfermedades,  Perfil cPaciente);
     short getEdad();
     list<string> getDiscapacidades();
     list<string> getEnfermedades();

@@ -29,6 +29,8 @@ void intro() {
                 list<string> sintomas;
                 int noDiscapacidades;
                 list<string> discapacidades;
+                int noEnfermedades;
+                list<string> enfermedades;
                 
                 cout << "Añadiendo nuevo paciente..." << endl;
                 cout << "¿Cuál es el nombre del paciente?" << endl;
@@ -54,7 +56,16 @@ void intro() {
                     discapacidades.push_back(disca);
                 }
                 
-                Paciente newPaciente(nombre, edad, discapacidades, perfil);
+                cout << "¿Cuantas enfermedades tiene?" << endl;
+                cin >> noEnfermedades;
+                for (int i = 0; i < noEnfermedades; i++) {
+                    string enfer;
+                    cout << "Añadir sintoma no." << i+1 << endl;
+                    cin >> enfer;
+                    enfermedades.push_back(enfer);
+                }
+                
+                Paciente newPaciente(nombre, edad, discapacidades, enfermedades, perfil);
                 listaPacientes.push_back(newPaciente);
                 break;
             }
@@ -82,10 +93,10 @@ int main(int argc, const char * argv[]) {
     //later must add option to add objects into list : )
     
     list<string> sintomas = {"Miopia", "Astigmatismo", "Vomito cronico"};
-    list<string> enfermedades = {};
-    
+    list<string> enfermedades = {"Martincitis", "Tanorisiis"};
+    list<string> discapacidades = {"Poblitis", "Andresitis"};
     Perfil cPaciente(sintomas); // comandoPaciente
-    Paciente pas("Juan", 30, enfermedades, cPaciente);
+    Paciente pas("Juan", 30, discapacidades, enfermedades, cPaciente);
     cout << pas.getNombrePaciente() << endl;
     hos.addPaciente(pas);
     
