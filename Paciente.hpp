@@ -19,15 +19,15 @@ class Paciente {
 private:
     string nombrePaciente;
     short edad;
-    list<string> discapacidades = {};
-    list<string> enfermedades = {};
     Perfil perfil;
+    vector<string> discapacidades;
+    vector<string> enfermedades;
 public:
     Paciente();
-    Paciente(string cNombre, short cEdad, list<string> cDiscapacidades, list<string> enfermedades,  Perfil cPaciente);
+    Paciente(string cNombre, short cEdad, vector<string> cDiscapacidades, vector<string> cEnfermedades,  Perfil cPaciente);
     short getEdad();
-    list<string> getDiscapacidades();
-    list<string> getEnfermedades();
+    vector<string> getDiscapacidades();
+    vector<string> getEnfermedades();
     string getNombrePaciente();
     void setNombre(string);
     void setEdad(short);

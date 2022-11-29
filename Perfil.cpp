@@ -7,6 +7,7 @@
 #include "Perfil.hpp"
 #include <list>
 #include <string>
+#include <vector>
 using namespace std;
 
 Perfil::Perfil() {
@@ -14,11 +15,11 @@ Perfil::Perfil() {
     riesgo = false;
 }
 
-Perfil::Perfil(list<string> cSintomas) {
+Perfil::Perfil(vector<string> cSintomas) {
     sintomas = cSintomas;
 }
 
-list<string> Perfil::getSintomas() {
+vector<string> Perfil::getSintomas() {
     return sintomas;
 }
 

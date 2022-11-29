@@ -16,7 +16,7 @@ Paciente::Paciente() {
     enfermedades = {};
 }
 
-Paciente::Paciente(string cNombre, short cEdad, list<string> cDiscapacidades, list<string> cEnfermedades, Perfil cPerfil) {
+Paciente::Paciente(string cNombre, short cEdad, vector<string> cDiscapacidades, vector<string> cEnfermedades, Perfil cPerfil) {
     nombrePaciente = cNombre;
     edad = cEdad;
     discapacidades = cDiscapacidades;
@@ -28,11 +28,11 @@ short Paciente::getEdad() {
     return edad;
 }
 
-list<string> Paciente::getDiscapacidades() {
+vector<string> Paciente::getDiscapacidades() {
     return discapacidades;
 }
 
-list<string> Paciente::getEnfermedades() {
+vector<string> Paciente::getEnfermedades() {
     return enfermedades;
 }
 
@@ -72,6 +72,7 @@ bool Paciente::hasRiesgo() { // does this work ??
 }
 
 bool Paciente::hasRiskCovid() {
+    for (int i = 0; )
     return (size(perfil.getSintomas()) > 1);
 }
 

@@ -17,12 +17,12 @@ using namespace std;
 
 class Perfil {
 private:
-    list<string> sintomas;
+    vector<string> sintomas;
     bool riesgo;
 public:
     Perfil();
-    Perfil(list<string> cSintomas);
-    list<string> getSintomas();
+    Perfil(vector<string> cSintomas);
+    vector<string> getSintomas();
     void addSintomas(string cSintomas);
     ~Perfil();
 };
