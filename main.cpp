@@ -14,95 +14,25 @@
 #include "Perfil.hpp"
 using namespace std;
 
-void intro(string nombre, vector<Paciente> cHospital) {
-    Hospital cHos(nombre, cHospital);
+void intro(string nombre) {
     vector<Paciente> listaPacientes;
+    Hospital cHos(nombre, listaPacientes);
     while (true) {
         int choice;
         cout << "¡Bienvenido al Sistema de Registro Médico!" << endl <<
-        "Que desea hacer?" << endl << "1) Añadir nuevo paciente " << endl << "2) Obtener nombre de personas con riesgo." << endl << "3) :O" << endl;
+        "Que desea hacer?" << endl << "1) Añadir nuevo paciente " << endl << "2) Obtener nombre de personas con riesgo." << endl << "3) Obtener nombre de personas con sintomas de COVID-19." << endl;
         cin >> choice;
         switch (choice) {
             case 1: {
-                string nombre;
-                int edad;
-                int noSintomas = 0;
-                vector<string> sintomas;
-                int noDiscapacidades = 0;
-                vector<string> discapacidades;
-                int noEnfermedades = 0;
-                vector<string> enfermedades;
-
-                cout << "Añadiendo nuevo paciente..." << endl;
-                cout << "¿Cuál es el nombre del paciente?" << endl;
-                cin.ignore(1,'\n');
-                getline(cin, nombre);
-                cout << "¿Cuál es su edad?" << endl;
-                cin >> edad;
-                
-                cout << "¿Cuántos síntomas tiene?" << endl;
-                cin >> noSintomas;
-                
-                for (int i = 0; i < noSintomas; i++) {
-                    cout << "Añadir sintoma no." << i+1 << endl;
-                    // cout << "Añadir síntoma" << endl;
-                    string sinto;
-                    cin.ignore(1, '\n');
-                    getline(cin, sinto);
-                    
-                    sintomas.push_back(sinto);
-                }
-                Perfil perfil(sintomas);
-                
-                cout << "¿Cuantas discapacidades tiene?" << endl;
-                cin >> noDiscapacidades;
-                
-                for (int i = 0; i < noDiscapacidades; i++) {
-                    cout << "Añadir discapacidad no." << i+1 << endl;
-                    // cout << "Añadir síntoma" << endl;
-                    string disca;
-                    cin.ignore(1, '\n');
-                    getline(cin, disca);
-                    
-                    discapacidades.push_back(disca);
-                }
-                
-                cout << "¿Cuantas enfermedades tiene?" << endl;
-                cin >> noEnfermedades;
-                for (int i = 0; i < noEnfermedades; i++) {
-                    cout << "Añadir enfermedad no." << i+1 << endl;
-                    // cout << "Añadir síntoma" << endl;
-                    string enfer;
-                    cin.ignore(1, '\n');
-                    getline(cin, enfer);
-                    
-                    enfermedades.push_back(enfer);
-                }
-                
-                Paciente newPaciente(nombre, edad, discapacidades, enfermedades, perfil);
-                listaPacientes.push_back(newPaciente);
+                cHos.addPaciente();
                 break;
             }
             case 2: {
-                cout << "Obteniendo nombres de personas de riesgo" << endl;
-                for (Paciente i : listaPacientes) {
-                    if (i.hasRiesgo()) {
-                        cout << i.getNombrePaciente() << endl;
-                    }
-                  }
+                cHos.resultadosRiesgo();
                 break;
             }
             case 3: {
-                float n = size(listaPacientes);
-                if (n <= 0) {
-                    cout << "Añade clientes primero" << endl;
-                }
-                else {
-                    for (int i = 0; i < n; i++) {
-                        listaPacientes[i].hasRiskCovid();
-                    }
-                }
-                cout << "amosae" << endl;
+                cHos.resultadosCovid();
                 break;
             }
             default: {
@@ -114,7 +44,7 @@ void intro(string nombre, vector<Paciente> cHospital) {
 }
 
 int main(int argc, const char * argv[]) {
-    vector<Paciente> c;
-    intro("San Jose", c);
+    
+    intro("San Jose");
     return 0;
 }
