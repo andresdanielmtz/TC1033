@@ -34,7 +34,7 @@ public:
     void addDiscapacidades(string);
     void addEnfermedades(string);
     bool hasRiesgo();
-    bool hasRiskCovid(); 
+    void hasRiskCovid();
     ~Paciente();
 };
 #endif /* Paciente_hpp */

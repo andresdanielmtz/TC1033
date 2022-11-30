@@ -18,15 +18,16 @@ using namespace std;
 class Hospital {
 private:
     string nombre;
-    list<Paciente> listPaciente; // lista de pacientes
+    vector<Paciente> listPaciente; // lista de pacientes
     Paciente apa;
 public:
     Hospital();
-    Hospital(string cNombre);
+    Hospital(string cNombre, vector<Paciente> listPaciente);
     string getNombre();
     list<Paciente> getPaciente(); // return list of paciente
     void setNombre(string);
-    void addPaciente(Paciente); // add pacient 
+    void addPaciente(Paciente); // add pacient
+    
     ~Hospital();
 };
 

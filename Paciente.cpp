@@ -8,6 +8,8 @@
 #include "Paciente.hpp"
 #include <list>
 #include <string>
+#include <iostream>
+using namespace std;
 
 Paciente::Paciente() {
     nombrePaciente = "";
@@ -71,9 +73,28 @@ bool Paciente::hasRiesgo() { // does this work ??
     return (riskCondition >= 2);
 }
 
-bool Paciente::hasRiskCovid() {
-    for (int i = 0; )
-    return (size(perfil.getSintomas()) > 1);
+void Paciente::hasRiskCovid() {
+    int sumSintomas = 0;
+    vector<string> sintomasCovid = {
+        "tos",
+        "gripe",
+        "calentura",
+        "dolor de cabeza",
+        "cuerpo cortado",
+        "cansancio",
+        "perdida del gusto",
+        "perdida del olfato",
+    };
+    for (int i = 0; i < size(perfil.getSintomas()); i++) {
+        for (int j = 0; j < size(sintomasCovid); j++) {
+            if (perfil.getSintomas()[i] == sintomasCovid[j]) {
+                sumSintomas += 1;
+            }
+        }
+    }
+    cout << "Nombre: " << nombrePaciente << endl;
+    cout << "No. de sintomas related to covid: " << sumSintomas << endl;
+    // return (size(perfil.getSintomas()) > 1);
 }
 
 Paciente::~Paciente() {}

@@ -14,8 +14,9 @@ Hospital::Hospital() {
     
 }
 
-Hospital::Hospital(string cNombre) {
+Hospital::Hospital(string cNombre, vector<Paciente> cHospital) {
     nombre = cNombre;
+    listPaciente = cHospital; 
     
 }
 

@@ -14,7 +14,8 @@
 #include "Perfil.hpp"
 using namespace std;
 
-void intro() {
+void intro(string nombre, vector<Paciente> cHospital) {
+    Hospital cHos(nombre, cHospital);
     vector<Paciente> listaPacientes;
     while (true) {
         int choice;
@@ -92,6 +93,15 @@ void intro() {
                 break;
             }
             case 3: {
+                float n = size(listaPacientes);
+                if (n <= 0) {
+                    cout << "Añade clientes primero" << endl;
+                }
+                else {
+                    for (int i = 0; i < n; i++) {
+                        listaPacientes[i].hasRiskCovid();
+                    }
+                }
                 cout << "amosae" << endl;
                 break;
             }
@@ -104,47 +114,7 @@ void intro() {
 }
 
 int main(int argc, const char * argv[]) {
-    intro();
-    cout << "Hello, World!\n";
-    Hospital hos("San Jose");
-    cout << "Nombre: " << hos.getNombre() << endl;
-    //later must add option to add objects into list : )
-    
-    vector<string> sintomas = {"Miopia", "Astigmatismo", "Vomito cronico"};
-    vector<string> enfermedades = {"Martincitis", "Tanorisiis"};
-    vector<string> discapacidades = {"Poblitis", "Andresitis"};
-    Perfil cPaciente(sintomas); // comandoPaciente
-    Paciente pas("Juan", 30, discapacidades, enfermedades, cPaciente);
-    cout << pas.getNombrePaciente() << endl;
-    hos.addPaciente(pas);
-    
-    if (pas.hasRiskCovid()) {
-        cout << "Tiene riesgo de covid :(" << endl;
-    }
-    else {
-        cout << "No tiene riesgo de covid" << endl;
-    }
-    // cout << pas.hasRiesgo() << endl; // ??
-    if (!(pas.hasRiesgo())) {
-        cout << pas.getNombrePaciente() << " No tiene riesgo" << endl;
-    }
-    else {
-        cout << pas.getNombrePaciente() << " si tiene riesgo..." << endl;
-    }
-    list<Paciente> lis = hos.getPaciente(); // get list of pacientes
-    // cout << lis[0].getNombrePaciente() << endl;
-        for (int i = 0; i < size(lis); i++)
-    {
-        cout << "Sinoidal" << endl;
-       //  cout <<  << endl;
-    }
-    
-    /*
-    list<Paciente> pacienteLista = new list<Paciente>();
-    
-    for (int i = 0; i < size(pacienteLista); i++) {
-        cout << pacienteLista[i] << endl;
-    }
-    */
+    vector<Paciente> c;
+    intro("San Jose", c);
     return 0;
 }
