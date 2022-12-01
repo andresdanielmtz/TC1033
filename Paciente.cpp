@@ -42,6 +42,10 @@ string Paciente::getNombrePaciente() {
     return nombrePaciente;
 }
 
+int Paciente::getSumSintomas()  {
+    return sumSintomas;
+}
+
 void Paciente::setNombre(string cNombre) {
     nombrePaciente = cNombre;
 }
@@ -73,7 +77,7 @@ bool Paciente::hasRiesgo() { // does this work ??
     return (riskCondition >= 2);
 }
 
-void Paciente::hasRiskCovid() {
+int Paciente::hasRiskCovid() {
     int sumSintomas = 0;
     vector<string> sintomasCovid = {
         "tos",
@@ -94,6 +98,7 @@ void Paciente::hasRiskCovid() {
     }
     cout << "Nombre: " << nombrePaciente << endl;
     cout << "No. de sintomas related to covid: " << sumSintomas << endl;
+    return sumSintomas;
     // return (size(perfil.getSintomas()) > 1);
 }
 

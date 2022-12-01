@@ -8,16 +8,20 @@
 #include "Hospital.hpp"
 #include "Paciente.hpp"
 #include <string>
-#include <list>
+#include <iostream>
+#include <fstream>
+#include<cstdlib>
 
-Hospital::Hospital() {
-    
-}
+Hospital::Hospital() {}
 
 Hospital::Hospital(string cNombre, vector<Paciente> cHospital) {
     nombre = cNombre;
-    listPaciente = cHospital; 
-    
+    listPaciente = cHospital;
+    ofstream myfile;
+    myfile.open("riesgo.txt");
+    ofstream covid;
+    covid.open("covid.txt");
+
 }
 
 string Hospital::getNombre() {
@@ -51,15 +55,17 @@ void Hospital::addPaciente() {
     
     cout << "¿Cuántos síntomas tiene?" << endl;
     cin >> noSintomas;
-    
-    for (int i = 0; i < noSintomas; i++) {
-        cout << "Añadir sintoma no." << i+1 << endl;
-        // cout << "Añadir síntoma" << endl;
-        string sinto;
-        cin.ignore(1, '\n');
-        getline(cin, sinto);
+    if (noSintomas > 0) {
+        cout << "Añadir síntoma(s):" << endl;
         
-        sintomas.push_back(sinto);
+        for (int i = 0; i < noSintomas; i++) {
+            // cout << "Añadir sintoma no." << i+1 << "\n";
+            // cout << "Añadir síntoma" << endl;
+            string sinto;
+            //getline(cin, sinto);
+            cin >> sinto;
+            sintomas.push_back(sinto);
+        }
     }
     Perfil perfil(sintomas);
     
@@ -90,21 +96,29 @@ void Hospital::addPaciente() {
     
     Paciente newPaciente(nombre, edad, discapacidades, enfermedades, perfil);
     listPaciente.push_back(newPaciente); //
+    if (newPaciente.hasRiesgo() > 0) {
+        cout << "Nombre: " << nombre << endl;
+        ofstream writtin;
+        writtin.open("riesgo.txt");
+        writtin << nombre << endl;
+        writtin.close();
+    }
+    if (newPaciente.hasRiskCovid()) {
+        ofstream covidEscritura;
+        covidEscritura.open("covid.txt");
+        covidEscritura << nombre << endl;
+        covidEscritura.close();
+    }
     cout << "Añadido paciente. Nombre: " << newPaciente.getNombrePaciente() << endl;
 }
 
-void Hospital::resultadosCovid() {
-    float n = size(listPaciente);
-    if (n <= 0) {
-        cout << "Añade clientes primero" << endl;
-    }
-    else {
-        cout << "Obteniendo nombres de personas de riesgo" << endl;
-        for (Paciente i : listPaciente) {
-            if (i.hasRiesgo()) {
-                cout << i.getNombrePaciente() << endl;
-            }
-          }
+void Hospital::readPacientesTXT() {
+    ifstream readFile;
+    readFile.open("riesgo.txt");
+    string text;
+    while(getline(readFile,text, '\n'))
+    {
+        cout<<text<<endl;
     }
 }
 
@@ -114,11 +128,30 @@ void Hospital::resultadosRiesgo() {
         cout << "Añade clientes primero" << endl;
     }
     else {
-        for (int i = 0; i < n; i++) {
-            listPaciente[i].hasRiskCovid();
+        cout << endl << "Nombre de personas de Riesgo: " << endl;
+        ifstream readFile;
+        readFile.open("riesgo.txt");
+        string text;
+        while(getline(readFile,text, '\n')) {
+            cout<<text<<endl;
         }
     }
-    cout << "amosae" << endl;
+}
+
+void Hospital::resultadosCovid() {
+    float n = size(listPaciente);
+    if (n <= 0) {
+        cout << "Añade clientes primero" << endl;
+    }
+    else {
+        cout << endl << "Nombre de personas con sintomas relacionados al COVID-19: " << endl;
+        ifstream readFile;
+        readFile.open("covid.txt");
+        string text;
+        while(getline(readFile,text, '\n')) {
+            cout<<text<<endl;
+        }
+    }
 }
 
 Hospital::~Hospital() {}

@@ -22,6 +22,7 @@ private:
     Perfil perfil;
     vector<string> discapacidades;
     vector<string> enfermedades;
+    int sumSintomas = 0;
 public:
     Paciente();
     Paciente(string cNombre, short cEdad, vector<string> cDiscapacidades, vector<string> cEnfermedades,  Perfil cPaciente);
@@ -29,12 +30,13 @@ public:
     vector<string> getDiscapacidades();
     vector<string> getEnfermedades();
     string getNombrePaciente();
+    int getSumSintomas();
     void setNombre(string);
     void setEdad(short);
     void addDiscapacidades(string);
     void addEnfermedades(string);
     bool hasRiesgo();
-    void hasRiskCovid();
+    int hasRiskCovid();
     ~Paciente();
 };
 #endif /* Paciente_hpp */

@@ -10,17 +10,23 @@
 #include <list>
 #include "Hospital.hpp"
 #include <vector> // why ??? ?
+#include <fstream>
 #include "Paciente.hpp"
 #include "Perfil.hpp"
 using namespace std;
 
-void intro(string nombre) {
+
+int intro() {
+    string nombreHospital;
+    cout << "Insertar nombre del Hospital:" << endl;
+    getline(cin, nombreHospital);
     vector<Paciente> listaPacientes;
-    Hospital cHos(nombre, listaPacientes);
+    Hospital cHos(nombreHospital, listaPacientes);
+    
     while (true) {
         int choice;
-        cout << "¡Bienvenido al Sistema de Registro Médico!" << endl <<
-        "Que desea hacer?" << endl << "1) Añadir nuevo paciente " << endl << "2) Obtener nombre de personas con riesgo." << endl << "3) Obtener nombre de personas con sintomas de COVID-19." << endl;
+        cout << "¡Bienvenido al Sistema de Registro Médico " << cHos.getNombre() << "!" << endl << endl <<
+        "Favor de seleccionar una de las siguientes opciones:" << endl << "1) Añadir nuevo paciente " << endl << "2) Obtener nombre de personas con riesgo." << endl << "3) Obtener nombre de personas con sintomas de COVID-19." << endl << "4) Salir" << endl;
         cin >> choice;
         switch (choice) {
             case 1: {
@@ -35,6 +41,11 @@ void intro(string nombre) {
                 cHos.resultadosCovid();
                 break;
             }
+            case 4: {
+                cout << "Saliendo..." << endl;
+                return 0;
+                break;
+            }
             default: {
                 cout << "Por favor escoge una opción válida, ¡gracias!" << endl;
                 break;
@@ -44,7 +55,6 @@ void intro(string nombre) {
 }
 
 int main(int argc, const char * argv[]) {
-    
-    intro("San Jose");
+    intro();
     return 0;
 }
