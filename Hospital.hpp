@@ -26,7 +26,6 @@ public:
     Hospital(string cNombre, vector<Paciente> listPaciente);
     string getNombre();
     vector<Paciente> getPaciente(); // return list of paciente
-    void readPacientesTXT(); 
     void setNombre(string);
     void addPaciente(); // add pacient
     void resultadosCovid();

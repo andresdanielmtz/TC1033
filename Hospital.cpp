@@ -112,16 +112,6 @@ void Hospital::addPaciente() {
     cout << "Añadido paciente. Nombre: " << newPaciente.getNombrePaciente() << endl;
 }
 
-void Hospital::readPacientesTXT() {
-    ifstream readFile;
-    readFile.open("riesgo.txt");
-    string text;
-    while(getline(readFile,text, '\n'))
-    {
-        cout<<text<<endl;
-    }
-}
-
 void Hospital::resultadosRiesgo() {
     float n = size(listPaciente);
     if (n <= 0) {
