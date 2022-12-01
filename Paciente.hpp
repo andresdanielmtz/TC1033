@@ -1,9 +1,10 @@
 //
 //  Paciente.hpp
 //  proyectoFinal
-//
-//  Created by Andres Daniel  on 25/11/22.
-//
+
+//  Andrés Daniel Martínez Bermúdez - A00227463
+//  Santiago Poblete Talamante - A01254609
+//  30 de Noviembre del 2022
 
 #ifndef Paciente_hpp
 #define Paciente_hpp
