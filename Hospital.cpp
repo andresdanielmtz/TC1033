@@ -13,6 +13,8 @@
 #include <iostream>
 #include <fstream>
 #include<cstdlib>
+#include <algorithm>
+#include <vector>
 
 Hospital::Hospital() {}
 
@@ -30,9 +32,11 @@ string Hospital::getNombre() {
     return nombre;
 }
 
-vector<Paciente> Hospital::getPaciente() {
-    return listPaciente;
-}
+Paciente Hospital::getPaciente(int pos) {
+    listPaciente[pos]; 
+    
+  }
+// vector metodo buscar elementos
 
 void Hospital::setNombre(string cNombre) {
     nombre = cNombre;
