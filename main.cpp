@@ -20,8 +20,7 @@ void intro() {
     string nombreHospital;
     cout << "Insertar nombre del Hospital:" << endl;
     getline(cin, nombreHospital);
-    vector<Paciente> listaPacientes;
-    Hospital cHos(nombreHospital, listaPacientes);
+    Hospital cHos(nombreHospital);
     int choice = 0;
     while (choice != 4) {
         cout << "¡Bienvenido al Sistema de Registro Médico " << cHos.getNombre() << "!" << endl << endl <<

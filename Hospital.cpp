@@ -16,9 +16,9 @@
 
 Hospital::Hospital() {}
 
-Hospital::Hospital(string cNombre, vector<Paciente> cHospital) {
+Hospital::Hospital(string cNombre) {
     nombre = cNombre;
-    listPaciente = cHospital;
+    vector<Paciente> listPaciente;
     ofstream myfile;
     myfile.open("riesgo.txt");
     ofstream covid;

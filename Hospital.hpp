@@ -24,7 +24,7 @@ private:
     ofstream myfile;
 public:
     Hospital();
-    Hospital(string cNombre, vector<Paciente> listPaciente);
+    Hospital(string cNombre);
     string getNombre();
     vector<Paciente> getPaciente(); // return list of paciente
     void setNombre(string);
