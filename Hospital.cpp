@@ -33,7 +33,7 @@ string Hospital::getNombre() {
 }
 
 Paciente Hospital::getPaciente(int pos) {
-    listPaciente[pos]; 
+    return listPaciente[pos]; 
     
   }
 // vector metodo buscar elementos
