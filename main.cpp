@@ -16,15 +16,14 @@
 using namespace std;
 
 
-int intro() {
+void intro() {
     string nombreHospital;
     cout << "Insertar nombre del Hospital:" << endl;
     getline(cin, nombreHospital);
     vector<Paciente> listaPacientes;
     Hospital cHos(nombreHospital, listaPacientes);
-    
-    while (true) {
-        int choice;
+    int choice = 0;
+    while (choice != 4) {
         cout << "¡Bienvenido al Sistema de Registro Médico " << cHos.getNombre() << "!" << endl << endl <<
         "Favor de seleccionar una de las siguientes opciones:" << endl << "1) Añadir nuevo paciente " << endl << "2) Obtener nombre de personas con riesgo." << endl << "3) Obtener nombre de personas con sintomas de COVID-19." << endl << "4) Salir" << endl;
         cin >> choice;
@@ -43,7 +42,6 @@ int intro() {
             }
             case 4: {
                 cout << "Saliendo..." << endl;
-                return 0;
                 break;
             }
             default: {
