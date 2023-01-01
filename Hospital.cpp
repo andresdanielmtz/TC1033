@@ -42,6 +42,22 @@ void Hospital::setNombre(string cNombre) {
     nombre = cNombre;
 }
 
+void writeFile(string nameFile, string content) {
+    ofstream write;
+    write.open(nameFile);
+    write << content << endl;
+    write.close();
+}
+
+void readFile(string fileName) {
+    ifstream readFile;
+    readFile.open(fileName);
+    string text;
+    while(getline(readFile,text, '\n')) {
+        cout << text << endl;
+    }
+}
+
 void Hospital::addPaciente() {
     string nombre;
     int edad;
@@ -103,20 +119,14 @@ void Hospital::addPaciente() {
     Paciente newPaciente(nombre, edad, discapacidades, enfermedades, perfil);
     listPaciente.push_back(newPaciente); //
     if (newPaciente.hasRiesgo() > 0) {
-        cout << "Nombre: " << nombre << endl;
-        ofstream writtin;
-        writtin.open("riesgo.txt");
-        writtin << nombre << endl;
-        writtin.close();
+        writeFile("riesgo.txt", nombre);
     }
     if (newPaciente.hasRiskCovid()) {
-        ofstream covidEscritura;
-        covidEscritura.open("covid.txt");
-        covidEscritura << nombre << endl;
-        covidEscritura.close();
+        writeFile("covid.txt", nombre);
     }
     cout << "Añadido paciente. Nombre: " << newPaciente.getNombrePaciente() << endl;
 }
+
 
 void Hospital::resultadosRiesgo() {
     float n = size(listPaciente);
@@ -125,12 +135,7 @@ void Hospital::resultadosRiesgo() {
     }
     else {
         cout << endl << "Nombre de personas de Riesgo: " << endl;
-        ifstream readFile;
-        readFile.open("riesgo.txt");
-        string text;
-        while(getline(readFile,text, '\n')) {
-            cout<<text<<endl;
-        }
+        readFile("riesgo.txt");
     }
 }
 
@@ -141,12 +146,7 @@ void Hospital::resultadosCovid() {
     }
     else {
         cout << endl << "Nombre de personas con sintomas relacionados al COVID-19: " << endl;
-        ifstream readFile;
-        readFile.open("covid.txt");
-        string text;
-        while(getline(readFile,text, '\n')) {
-            cout<<text<<endl;
-        }
+        readFile("covid.txt");
     }
 }
 
